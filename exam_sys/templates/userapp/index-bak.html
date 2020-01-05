@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/swiper.min.css">
+    <script src="/static/js/jquery-1.12.4.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/swiper.jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <script src="/static/js/index.js"></script>
+
+</head>
+<body>
+    <div class="navbar page-header navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" id="tog">
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+                </button>
+
+                <ul class="mob-menu hide">
+                    <li><h3><a href="/">首页</a></h3></li>
+                    <li><h3><a href="/">快速出题</a></h3></li>
+                    <li><h3><a href="/">成为机构</a></h3></li>
+                    <li id="p_login">
+                        <h3>
+                            <a href="javascript:;" class="p_login">密码登录</a>
+                        </h3>
+                    </li>
+                </ul>
+                <a class="navbar-brand">
+                    <img src="/static/images/logo.png">
+                </a>
+            </div>
+
+            <div class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav">
+                        <li><h3><a href="/">首页</a></h3></li>
+                        <li><h3><a href="/">快速出题</a></h3></li>
+                        <li><h3><a href="/">成为机构</a></h3></li>
+
+                        <li id="p_login">
+                            <h3>
+                                <a href="/">登录</a>
+                            </h3>
+                            <a class="p_login">密码登录</a>
+                        </li>
+
+                    </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class='page-body'>
+        <!-- 模态框 -->
+        <div class="modal">
+            <div class="modal-dialog">
+                <!-- 登录模态框 -->
+                <div class="modal-content login hide">
+                    <h4 class="modal-header">
+                        <span class="title left">登录</span>
+                        <!-- <i class="fa fa-times right" aria-hidden="true"></i> -->
+                        <span aria-hidden="true" class="close right">×</span>
+                    </h4>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="email">邮箱</label>
+                                <input type="email" class="form-control" id="email" placeholder="uson.mr@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwd">密码</label>
+                                <input type="password" class="form-control" id="passwd" placeholder="#p@ssw0d123">
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout">验证码</label>
+                                <input type="text" class="form-control" id="checkout">
+                            </div>
+                            <div class="modal-footer">
+                                <a id="resetPasswd">忘记密码?</a>
+                                <a id="signUp">注册</a>
+                                <button type="submit" class="btn btn-primary">登录</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 注册模态框 -->
+                <div class="modal-content register hide">
+                    <h4 class="modal-header">
+                        <span class="title left">注册</span>
+                        <span aria-hidden="true" class="close right">×</span>
+                    </h4>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="email">邮箱</label>
+                                <input type="email" class="form-control" id="email" placeholder="uson.mr@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwd">密码</label>
+                                <input type="password" class="form-control" id="passwd" placeholder="#p@ssw0d123">
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout">确认密码</label>
+                                <input type="text" class="form-control" id="confirm-passwd">
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout">验证码</label>
+                                <input type="text" class="form-control" id="checkout">
+                            </div>
+                            <div class="modal-footer">
+                                <a class="p_login">已有账户,去登陆</a>
+                                <button type="submit" class="btn btn-primary">注册</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 找回密码 -->
+                <div class="modal-content find-passwd hide">
+                    <h4 class="modal-header">
+                        <span class="title left">重置密码</span>
+                        <span aria-hidden="true" class="close right">×</span>
+                    </h4>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="email">邮箱</label>
+                                <input type="email" class="form-control" id="email" placeholder="uson.mr@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwd">密码</label>
+                                <input type="password" class="form-control" id="passwd" placeholder="#p@ssw0d123">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwd">新密码</label>
+                                <input type="password" class="form-control" id="new-passwd" placeholder="new#p@ssw0d123">
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout">确认密码</label>
+                                <input type="text" class="form-control" id="confirm-passwd" placeholder="new#p@ssw0d123">
+                            </div>
+                            <div class="form-group">
+                                <p>邮件发送后，请在三十分钟之内登录邮箱确认!</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">发送邮件</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 遮罩层 -->
+                <div class="mask hide"></div>
+
+            </div>
+        </div>
+
+        <div class="jumbotron">
+            <div class="container">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="/static/images/banner2.png" width="100%" alt="slider1"></div>
+                        <div class="swiper-slide"><img src="/static/images/banner3.png" width="100%" alt="slider2"></div>
+                        <div class="swiper-slide"><img src="/static/images/banner4.png" width="100%" alt="slider3"></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="com_type">
+            <div class="container">
+                <h2 class="competition">
+                    <img src="/static/images/icon4.png">
+                    <span class="title">比赛分类</span>
+                </h2>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="hotmatch pic left">
+                            <img src="/static/images/layout-icon3.png">
+                            <p>了解自己 科学规划 激发潜能</p>
+                            <div class="pic-tag">热门比赛</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="admin pic left">
+                            <img src="/static/images/layout-icon1.png">
+                            <p>优化理念 紧跟技术发展趋势</p>
+                            <div class="pic-tag">技术类</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="edu pic left">
+                            <img src="/static/images/layout-icon2.png">
+                            <p>提升生涯引领水平 掌握实操技能</p>
+                            <div class="pic-tag">教育类</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="culture pic left">
+                            <img src="/static/images/layout-icon4.png">
+                            <p>掌握动态 增长知识 助力规划未来</p>
+                            <div class="pic-tag">文化类</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="admin pic left">
+                            <img src="/static/images/layout-icon1.png">
+                            <p>优化理念 大数据预测发展趋势</p>
+                            <div class="pic-tag">体育类</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="edu pic left">
+                            <img src="/static/images/layout-icon2.png">
+                            <p>掌握动态 增长知识 助力规划未来</p>
+                            <div class="pic-tag">常识类</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="culture pic left">
+                            <img src="/static/images/layout-icon4.png">
+                            <p>了解自己 科学规划 激发潜能</p>
+                            <div class="pic-tag">面试类</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="hotmatch pic left">
+                            <img src="/static/images/layout-icon3.png">
+                            <p>更多内容 正在制作中 ...</p>
+                            <div class="pic-tag">请稍后</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class='page-footer'>
+            <div class="container">
+                <div class="friend-link">
+                    <a href="http://www.cohui.top/">智汇部落</a> |
+                    <a href="http://www.5iquan.vip/">我爱券</a> |
+                    <a href="https://www.cnblogs.com/uson/">博客园</a> |
+                    <a href="/">首页</a>
+                </div>
+                <div class="copy">
+                    <p>
+                        上海尚孔教育培训有限公司
+                    </p>
+                    <p>沪ICP备10002740号-2  增值电信业务经营许可证 沪B2-20150068</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

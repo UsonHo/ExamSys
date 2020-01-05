@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="modal-dialog">
+            <div class="modal-content">
+                <h4 class="modal-header">
+                    <span class="title left">登录</span>
+                    <!-- <i class="fa fa-times right" aria-hidden="true"></i> -->
+                    <span aria-hidden="true" class="close right">×</span>
+                </h4>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" class="form-control" id="email" placeholder="uson.mr@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="passwd">密码</label>
+                            <input type="password" class="form-control" id="passwd" placeholder="#p@ssw0d123">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout">验证码</label>
+                            <input type="file" id="checkout">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mask"></div>
+        </div>
+
+.page-body .modal-dialog{
+    /*display: none;*/
+    position: relative;
+}
+.page-body .modal-dialog .mask{
+    position: fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color: #2f3c4e;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    z-index: 10000;
+}
+.page-body .modal-dialog .modal-content{
+    position: fixed;
+    width: 500px;
+    height: 400px;
+    background-color: #fff;
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -200px;
+    z-index: 10001;
+    border-radius: 6px;
+}
+
+.modal-dialog .modal-header{
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+    border-bottom: 1px solid #ddd;
+    padding: 0;
+}
+.modal-dialog .modal-header .title{
+    padding: 0 15px;
+    font-size: 18px;
+}
+.close{
+    padding-right: 15px;
+    line-height: 56px;
+}
+
+.modal-dialog .modal-body{
+    padding: 15px;
+}
+.modal-dialog .item .modal-body{
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+.mycontent{
+    background: url("/static/images/form-bg.jpg") no-repeat center top;
+    min-height: 600px;
+}
+
+.form-validation{
+    width: auto;
+    max-width: 500px;
+    margin: 30px auto;
+    background-color: #fff;
+    border-radius: 6px;
+}
+.form-validation .form-group{
+    margin: 10px 15px;
+}
+
+.form-validation .form-header{
+    height: 44px;
+    line-height: 44px;
+    padding-left: 15px;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.mycontent .form-header .title{
+    color: #31708f;
+}
+
+.mycontent .alert {
+    text-align: center;
+}
+.mycontent .btn-lg {
+    display: none;
+}
+@media (max-width: 560px) {
+    .mycontent .alert .back_text {
+        display: none;
+    }
+
+    .mycontent .btn-lg {
+        display: block;
+    }
+}
+.mycontent .alert .back_text {
+    color: #000;
+    float: right;
+    text-decoration: none;
+}
+
+.mycontent .pic {
+    margin: 0 auto 30px;
+}
+
+.mycontent .img-responsive {
+    margin: 0 auto;
+}
+
+.mycontent .sms .form-control{
+    width: 70%;
+}
+@media all and (max-width: 500px) {
+    .mycontent .sms .form-control{
+        width: 60%;
+    }
+}

@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block title %}设置题库{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/extend.css">
+    <style>
+        .usonPage .pagenation .active {
+            background-color: #2b542c;
+            color: white;
+        }
+    </style>
+{% endblock %}
+{% block js %}{% endblock %}
+{% block content %}
+    <div class="container matchlist">
+        <ul class="breadcrumb">
+            <span class="cur-pos">当前位置：</span>
+            <li><a href="/">首页</a> <span class="divider"></span></li>
+            <li class="active">比赛列表</li>
+        </ul>
+        <div class="main-content">
+            <ul>
+                {% if match_list %}
+                    {% for obj in match_list %}
+                        <li class="alert alert-dark alert-dismissible show col-lg-6 col-md-6 col-sm-6 col-xs-6">
+
+                            <a type="button" href="{% url 'match:list_del' obj.id %}" class="close delete"
+                               data-dismiss="alert">&times;</a>
+                            <a href="{% url 'match:info' obj.id %}">
+                        <span class="pub-date">
+                            <b>{{ obj.stime|date:"Y-m" }}</b>
+                            <i>{{ obj.stime|date:"d" }}</i>
+                        </span>
+                                <!--用position=absolute来定位，inline-block不好让两者同一高度，上下居中-->
+                                <span class="pub-organ">
+                            <h1>{{ obj.mname }}</h1>
+                            <p>赞助商：{{ obj.auinfo__oname }}</p>
+                            <span class="badge badge-pill badge-default hoted">热度:{{ obj.qinfo__qucount }}</span>
+                            <p>结束时间：{{ obj.etime|truncatechars:'10' }}</p>
+                        </span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <div class="list-group ">
+                        <h4 class="text-center">暂无比赛</h4><br/>
+                    </div>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="usonPage">
+        <div class="container page" style="text-align: center;">
+            <ul class="pagination pagination-lg" style="margin: 10px auto">
+                {% if match_list.has_previous %}
+                    <li><a href="{% url 'match:match_list' match_list.0.qinfo__qtype %}?pindex={{ match_list.previous_page_number }}">&laquo;</a></li>
+                {% endif %}
+                {% for pageindex in page_list %}
+                    {% if pageindex == match_list.number %}
+                        <li class="active"><a href="{% url 'match:list' %}?pindex={{ pageindex }}">{{ pageindex }}</a>
+                        </li>
+                    {% else %}
+                        <li><a href="{% url 'match:match_list' match_list.0.qinfo__qtype %}?pindex={{ pageindex }}">{{ pageindex }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if match_list.has_next %}
+                    <li><a href="{% url 'match:match_list' match_list.0.qinfo__qtype %}?pindex={{ match_list.next_page_number }}">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+{% block js2 %}
+    <script>
+        $(function () {
+            function truncation() {
+                $('.pub-organ').each(function () {
+                    var curWidth = parseInt($('.matchlist .main-content .alert').css('width'));
+                    var fillWidth = curWidth - 91;
+                    // console.log(curWidth);
+                    $(this).children().eq(1).css('width', fillWidth);
+                });
+            }
+
+            truncation();
+            $(window).resize(function () {
+                truncation();
+            });
+            function pageNation() {
+                if ($(window).width() < 400) {
+                    $('.page ul').addClass('pagination-sm');
+                } else {
+                    $('.page ul').removeClass('pagination-sm');
+                }
+            }
+        });
+
+        // 删除比赛配置
+        $('.matchlist .main-content .delete').click(function (e) {
+            var ths = $(this);
+            $.ajax({
+                url: $(this).attr('href'),
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    // console.log(data);
+                    if (data.error_del) {
+                        alert(data.error_del);
+                    } else {
+                        alert(data.success_del);
+                        // console.log(this);  // 这里的this不再是点击那个标签了
+                        ths.parent().fadeOut(1000, 'swing', function () {
+                            $(this).remove();
+                        });
+                    }
+                },
+                error: function (k) {
+                    //
+                }
+            });
+            return false;
+        });
+
+    </script>
+{% endblock %}

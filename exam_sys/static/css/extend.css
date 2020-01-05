@@ -1,0 +1,1355 @@
+.mycontent .alert {
+    text-align: center;
+}
+
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #705a39;
+}
+
+h3 {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+i {
+    font-style: normal;
+}
+
+@media (max-width: 560px) {
+    .set_request .alert .back_text {
+        display: none;
+    }
+
+    .set_request .btn-lg {
+        display: block;
+    }
+}
+
+.set_request .alert .back_text {
+    color: #000;
+    float: right;
+    text-decoration: none;
+}
+
+.set_request .pic {
+    margin: 0 auto 30px;
+}
+
+.set_request .img-responsive {
+    margin: 0 auto;
+}
+
+/*最小页面的button*/
+.btn-lg {
+    display: none;
+    padding: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    margin-top: -14px;
+}
+
+/*题目录制页面*/
+.set-index .jumbotron {
+}
+
+.set-index .jumbotron .title {
+    font-size: 40px;
+    color: orange;
+    margin-top: 0;
+}
+
+.set-index .jumbotron .con {
+    font-size: 18px;
+    padding: 20px 0;
+}
+
+.set-index .jumbotron .btn-lg {
+    display: inline-block;
+    padding: 10px 16px;
+    font-size: 18px;
+}
+
+/*上传题库*/
+.main-content .title-pr {
+    width: 450px;
+    height: 70px;
+    border: 1px solid #000;
+    margin: 100px auto;
+    font-size: 34px;
+    text-align: center;
+    line-height: 70px;
+}
+
+.topic-download {
+    background: url("/static/images/download_icon.png") no-repeat center;
+    background-size: 100%;
+}
+
+.topic-name {
+    background: url("/static/images/edit_icon.png") no-repeat center;
+    background-size: 100%;
+}
+
+.topic-type {
+    background: url("/static/images/select_icon.png") no-repeat center;
+    background-size: 100%;
+}
+
+.topic-upload {
+    background: url("/static/images/upload_icon.png") no-repeat center;
+    background-size: 100%;
+}
+
+/* FF浏览器的兼容性设置 */
+@-moz-document url-prefix() {
+    .topic-operate div #topicFile {
+        padding: 0;
+    }
+}
+
+.topic-operate #topicFile {
+    padding: 3px;
+}
+
+/*
+.topic-operate .upload-main{
+    position: relative;
+    height: 30px;
+    width: 74px;
+    margin-top: 4px;
+}
+*/
+/*
+.topic-operate .upload-main span{
+    display: inline-block;
+    color: #000;
+    position: absolute;
+    left:82px;
+    top: 3px;
+    width:126px;
+}
+.topic-operate .beautifulUFB{
+    display: inline-block;
+    background-color: #379ce2;
+    position: absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    top:0;
+    z-index: 19;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    text-decoration: none;
+}
+.topic-operate #uploadFileButton{
+    position: absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    top:0;
+    line-height: 30px;
+    z-index: 20;
+    opacity: 0;
+    cursor: pointer;
+}
+*/
+
+.main-content .row .con {
+    width: 198px;
+    height: 194px;
+    text-align: center;
+    position: relative;
+}
+
+.main-content .row span {
+    font-size: 20px;
+    color: #fff;
+}
+
+@media (max-width: 430px) {
+    .main-content .row .noImg {
+        display: none;
+    }
+
+    .main-content .row .con {
+        width: 25%;
+        max-height: 100px;
+    }
+
+    .topic-download {
+        background: url("/static/images/download_icon.png") no-repeat center;
+        background-size: 88%;
+    }
+
+    .topic-name {
+        background: url("/static/images/edit_icon.png") no-repeat center;
+        background-size: 88%;
+    }
+
+    .topic-type {
+        background: url("/static/images/select_icon.png") no-repeat center;
+        background-size: 88%;
+    }
+
+    .topic-upload {
+        background: url("/static/images/upload_icon.png") no-repeat center;
+        background-size: 88%;
+    }
+
+    .main-content div.title-pr {
+        margin: 0 auto 10px;
+    }
+}
+
+@media (min-width: 430px) and (max-width: 768px) {
+    .main-content .row .noImg {
+        display: none;
+    }
+
+    .main-content .row .con {
+        width: 25%;
+        max-height: 160px;
+    }
+
+    .topic-download {
+        background: url("/static/images/download_icon.png") no-repeat center;
+        background-size: 88%;
+    }
+
+    .topic-name {
+        background: url("/static/images/edit_icon.png") no-repeat center;
+        background-size: 88%;
+    }
+
+    .topic-type {
+        background: url("/static/images/select_icon.png") no-repeat center;
+        background-size: 88%;
+    }
+
+    .topic-upload {
+        background: url("/static/images/upload_icon.png") no-repeat center;
+        background-size: 88%;
+    }
+
+    .main-content div.title-pr {
+        margin: 20px auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .main-content .row .noImg {
+        background: url("/static/images/right_arrow.png") no-repeat center;
+        width: 58px;
+        height: 46px;
+        margin-top: 74px;
+    }
+
+    /*如果是背景图,设置background-size=100%,再只要给外框一个百分比缩小整体尺寸即可完成响应式*/
+    .main-content .row .con {
+        width: 19%;
+    }
+
+    .main-content div.title-pr {
+        margin: 40px auto;
+    }
+
+    /*
+    .main-content .row .con span{
+       font-size: 20px;
+       color: #fff;
+    }
+    */
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .main-content .row .noImg {
+        background: url("/static/images/right_arrow.png") no-repeat center;
+        width: 58px;
+        height: 46px;
+        margin-top: 74px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .main-content .row .noImg {
+        background: url("/static/images/right_arrow.png") no-repeat center;
+        width: 126px;
+        height: 46px;
+        margin-top: 74px;
+    }
+}
+
+.main-content div[class*="col-"] {
+    text-align: left;
+}
+
+@media (max-width: 1200px) {
+    .topic-operate {
+        margin: 50px auto 30px;
+    }
+
+    .main-content .title-pr {
+        margin: 50px auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    .topic-operate {
+        margin: 100px auto 50px;
+    }
+}
+
+.topic-operate .form-inline {
+    text-align: center;
+}
+
+.topic-operate .btn-set {
+    margin: 40px auto 0;
+}
+
+.topic-operate .btn-danger {
+    height: 60px;
+    font-size: 24px;
+    background-color: #d9534f;
+    padding: 0 71px;
+}
+
+.topic-operate .form-set {
+    text-align: center;
+}
+
+.topic-operate .btn-download {
+    padding: 4px 5px;
+}
+
+.topic-operate p i {
+    font-style: normal;
+}
+
+@media (min-width: 435px) and (max-width: 600px) {
+    .topic-operate p i {
+        display: none;
+    }
+
+    body .topic-operate p span {
+        font-size: 14px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 435px) {
+    .topic-operate p i {
+        display: none;
+    }
+
+    body .topic-operate p span {
+        font-size: 14px;
+        padding: 0;
+    }
+
+    .topic-operate .dropdown .btn {
+        display: inline !important;
+        font-size: 12px;
+        padding: 0;
+    }
+
+    body .dropdown .dropdown-menu .form-control {
+        border: 0 solid #204d74;
+        font-size: 12px;
+    }
+
+    .topic-operate .btn-danger {
+        height: 30px;
+        font-size: 16px;
+        padding: 0 18px;
+    }
+
+    .topic-operate .btn-set {
+        margin: 10px auto 0;
+    }
+
+    .topic-operate {
+        margin: 30px auto 10px;
+    }
+}
+
+.topic-operate p span {
+    font-size: 12px;
+    padding: 0;
+}
+
+.topic-operate .dropdown .btn-primary {
+    background-color: #3c97e6 !important;
+    border-color: #204d74;
+}
+
+.topic-operate .dropdown .dropdown-menu {
+    min-width: 100%;
+    text-align: center;
+    /*background-color: #204d74;*/
+    /*color: white;*/
+    /*top: -2px;*/
+}
+
+.topic-operate .btn {
+    display: inline !important;
+}
+
+.dropdown .dropdown-menu .dropdown-item {
+    /*background-color: #337ab7;*/
+    background-color: #337ab7;
+    color: #FFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: #4188d2;
+    border: 1px solid #204d74;
+}
+
+.dropdown .dropdown-menu .form-control {
+    border: 0 solid #204d74;
+}
+
+/*设置问题页*/
+.mysetquestion {
+    background: url("/static/images/form-bg.jpg") no-repeat center fixed;
+    /*min-height: 800px;*/
+    /*max-height: 790px;*/
+    /*background-size: 100%;*/
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.mysetquestion .inner-content {
+    /*margin-top: 50px;*/
+    margin: 30px auto;
+}
+
+.mysetquestion .inner-content .leftSet, .mysetquestion .inner-content .midSet, .mysetquestion .inner-content .rightSet {
+    text-align: left;
+}
+
+.mysetquestion .inner-content .leftSet {
+    /*padding: 0 48px;*/
+}
+
+.mysetquestion .inner-content .rightSet span {
+    margin-left: 5px;
+}
+
+.mysetquestion .inner-content .title {
+    color: #FFF;
+}
+
+.mysetquestion .inner-content .row .col-lg-4 {
+    width: 37.5%;
+}
+
+.mysetquestion .configTitle .text-title {
+    border: 2px solid #a0a0a0;
+    font: normal 34px/71px 'microsoft yahei';
+    height: 71px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 3px;
+    display: inline-block;
+    width: 450px;
+    margin-bottom: 32px;
+}
+
+.mysetquestion .inner-content .row label {
+    color: #FFF;
+    /*font: normal 12px/26px 'microsoft yahei';*/
+    font-size: 12px;
+}
+
+.mysetquestion .inner-content .rightSet table {
+    text-align: center;
+    color: #FFF;
+    margin-top: 4px;
+}
+
+.mysetquestion .inner-content .rightSet .select-field input[type='checkbox'] {
+    position: static;
+}
+
+/*
+.mysetquestion .inner-content .rightSet .addField .table-hover {
+    color: black;
+}
+*/
+.mysetquestion .inner-content .rightSet .addField .table {
+    color: #FFF;
+}
+
+.mysetquestion .inner-content .rightSet .addField .table tr:hover {
+    color: #000;
+}
+
+.mysetquestion .inner-content .saveButton {
+    font-size: 24px;
+    padding: 18px 40px;
+    line-height: 1;
+    margin-top: 30px;
+}
+.mysetquestion .inner-content .error-message{
+    color: red;
+}
+
+/*
+不要自己写
+.mysetquestion .inner-content .dropdown .btn{
+    background-color: #31b0d5;
+    border-color: #1b6d85;
+}
+*/
+
+/*
+.mysetquestion .inner-content .dropdown .btn-primary {
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+
+.mysetquestion .inner-content .dropdown .btn-primary:hover {
+    background-color: #31b0d5;
+    border-color: #269abc;
+}
+.mysetquestion .inner-content .dropdown .btn-primary:active {
+    background-color: #31b0d5;
+    border-color: #269abc;
+}
+*/
+
+/*
+.mysetquestion .inner-content .dropdown .btn-primary:active:focus {
+    background-color: #269abc;
+    border-color: #269abc;
+    color: #8a6d3b;
+}
+*/
+
+/*
+.mysetquestion .inner-content .dropdown .btn-primary:focus {
+    background-color: #269abc;
+    border-color: #1b6d85;
+    color: red;
+}
+*/
+
+/*.mysetquestion .inner-content .dropdown input[type="button"] {*/
+.mysetquestion .inner-content .dropdown .btn-info {
+    width: 80px;
+    height: 40px;
+}
+
+.mysetquestion .inner-content .dropdown .dropdown-menu {
+    width: 170px;
+    padding: 1px 2px;
+}
+
+.mysetquestion .inner-content .selectKu {
+    margin-top: 14px;
+}
+
+.mysetquestion .inner-content .selectKu .btn-info {
+    width: 100%;
+    height: 40px;
+    border-color: #ddd;
+}
+
+.mysetquestion .inner-content .selectKu .uson {
+    /*两个一起使用才可以*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+
+.mysetquestion .modal-dialog{
+    margin-top: 160px;
+}
+.mysetquestion .rightSet form .words-limit{
+    display: inline-block;
+    overflow: hidden;
+    width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mysetquestion .rightSet .deldelay{
+    display: inline-block;
+    padding: 0 10px 2px;
+    background-color: #129715;
+    color: #fff;
+    border-radius: 6px;
+    position: absolute;
+}
+
+.mysetquestion .inner-content .selectKu #menu1 {
+    width: 100%;
+    margin-top: 5px;
+}
+
+ .mysetquestion .leftSet .dropup .dropdown-menu li{
+    margin:1% 1.6%;
+    width: 30%;
+}
+
+.mysetquestion .selectKu .dropup .dropdown-menu{
+    margin-bottom: 0;
+    max-height: 300px;
+    overflow: auto;
+}
+.mysetquestion .selectKu .dropup .dropdown-menu li{
+    display: inline-block;
+}
+
+.mysetquestion .inner-content .pc-save {
+    display: inline-block;
+}
+
+.mysetquestion .inner-content .mob-save {
+    display: none;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    body .mysetquestion .inner-content {
+        margin: 15px auto;
+    }
+
+    .mysetquestion .configTitle .text-title {
+        font-size: 28px;
+        line-height: 56px;
+        height: 56px;
+        margin-bottom: 28px;
+        width: 400px;
+    }
+
+    .mysetquestion .inner-content h3 {
+        font-size: 22px;
+    }
+
+    .mysetquestion .inner-content .form-control {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .mysetquestion .inner-content .selectKu .btn-info {
+        height: 34px;
+    }
+
+    .mysetquestion .inner-content .leftSet .btn {
+        padding: 6px 2px;
+    }
+
+    body .mysetquestion .inner-content .row .col-lg-4 {
+        width: 36.5%;
+    }
+
+    .mysetquestion .inner-content .row .col-sm-4 {
+        width: 27%;
+    }
+
+    .mysetquestion .inner-content .rightSet table td {
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    body .mysetquestion {
+        background: url("/static/images/form-bg.jpg") center fixed;
+        max-height: 100%;
+    }
+
+    .mysetquestion .inner-content .leftSet, .mysetquestion .inner-content .midSet, .mysetquestion .inner-content .rightSet {
+        text-align: center;
+    }
+
+    .mysetquestion .configTitle .text-title {
+        font-size: 32px;
+        line-height: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    body .mysetquestion .inner-content {
+        margin: 2px auto;
+    }
+
+    .mysetquestion .inner-content .leftSet input.btn {
+        padding: 0;
+        width: 100%;
+    }
+
+    .mysetquestion .inner-content .row .col-lg-4 {
+        width: 100%;
+    }
+
+    .mysetquestion .inner-content .midSet {
+        margin-top: 15px;
+    }
+
+    .mysetquestion .inner-content .pc-save {
+        display: none;
+    }
+
+    .mysetquestion .inner-content .mob-save {
+        display: inline-block;
+    }
+
+
+    .mysetquestion .leftSet .dropup .dropdown-menu li{
+        margin:1% 1.6%;
+        width: 46%;
+    }
+}
+
+@media (max-width: 380px) {
+    .mysetquestion .inner-content .rightSet table td {
+        padding: 0;
+    }
+}
+
+/*设置题库的模态框*/
+.mysetquestion .inner-content .modal {
+    display: none;
+}
+
+.mysetquestion .modal .leftinfo .modal-header {
+    padding: 10px 0 0;
+}
+
+.mysetquestion .modal .leftinfo .modal-header h4 {
+    display: inline-block;
+}
+
+.mysetquestion .modal .leftinfo .modal-header .close {
+    margin-right: 20px;
+}
+
+.mysetquestion .modal .leftinfo .modal-body {
+    padding: 0;
+}
+
+.mysetquestion .inner-content .modal .modal-body table {
+    margin-bottom: 0;
+}
+
+.mysetquestion .modal .modal-sm {
+    margin: 0 auto;
+}
+
+.mysetquestion .modal .midinfo .modal-body {
+    line-height: 100px;
+    height: 100px;
+    padding: 0;
+    font-size: 18px;
+}
+
+.mysetquestion .modal .midinfo .modal-footer {
+    background-color: #f0f0f0;
+}
+
+/*自定义字段的模态框*/
+.mysetquestion .modal .rightinfo .form-group {
+    margin: 0 auto;
+    width: 80%;
+    text-align: left;
+}
+
+.mysetquestion .modal .rightinfo .modal-footer {
+    border-top: 0;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/*比赛信息页*/
+.breadcrumb > li + li:before {
+    color: #777;
+    content: "> ";
+    padding: 0 5px;
+}
+
+.container .breadcrumb {
+    background-color: white;
+    margin-top: 20px;
+}
+
+.container .breadcrumb .cur-pos {
+    background: url("/static/images/position.jpg") no-repeat 0 4px;
+    padding-left: 18px;
+}
+
+.matchinfo .main-content {
+    width: 100%;
+    background-color: #edf5f8;
+    border: 1px solid #cfcfcf;
+}
+
+.matchinfo .main-content .rep-title {
+    background-color: #699ee6;
+    width: 90%;
+    margin: 15px auto;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 30px;
+    height: 44px;
+    line-height: 44px;
+    color: #FFF;
+}
+
+.matchinfo .main-content .res-table {
+    padding: 10px 10% 10px;
+    border: 2px dashed #bfbfbf;
+    width: 70%;
+    margin: 40px auto 20px;
+}
+
+.matchinfo .main-content .res-table .header-welcome {
+    background: url("/static/images/person.png") no-repeat left center;
+    height: 36px;
+    line-height: 36px;
+    font-size: 25px;
+    padding-left: 45px;
+}
+
+.matchinfo .main-content .res-table span {
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.matchinfo .main-content .res-table .res-detail {
+
+}
+
+.matchinfo .main-content .res-table .res-detail td {
+    padding: 14px 20px;
+}
+
+.matchinfo .main-content .footer-button {
+    text-align: center;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .matchinfo .main-content .res-table .header-welcome {
+        height: 30px;
+        line-height: 27px;
+        font-size: 22px;
+        padding-left: 36px;
+        background-size: 13%;
+    }
+
+    .matchinfo .main-content .res-table .res-detail td {
+        padding: 10px 18px;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 450px) {
+    .matchinfo .main-content .res-table .header-welcome {
+        height: 26px;
+        line-height: 24px;
+        font-size: 18px;
+        padding-left: 32px;
+        background-size: 13%;
+    }
+
+    .matchinfo .main-content .res-table .res-detail td {
+        padding: 6px 14px;
+    }
+
+    .matchinfo .main-content .rep-title {
+        font-size: 24px;
+        height: 38px;
+        line-height: 38px;
+        margin: 4px auto;
+    }
+
+    .matchinfo .main-content .res-table {
+        margin: 24px auto 20px;
+        width: 86%;
+    }
+}
+
+@media (max-width: 450px) {
+    .matchinfo .main-content .res-table .header-welcome {
+        height: 26px;
+        line-height: 24px;
+        font-size: 18px;
+        padding-left: 32px;
+        background-size: 13%;
+    }
+
+    .matchinfo .main-content .res-table .res-detail td {
+        padding: 6px 14px;
+    }
+
+    .matchinfo .main-content .rep-title {
+        font-size: 20px;
+        height: 32px;
+        line-height: 32px;
+        margin: 0 auto;
+    }
+
+    .matchinfo .main-content .res-table {
+        margin: 24px auto 20px;
+        padding: 8px 6% 10px;
+        width: 96%;
+    }
+
+    .container .breadcrumb {
+        padding: 0;
+    }
+
+    .mysetquestion .leftSet .dropup .dropdown-menu li{
+        margin:1% 1%;
+        width: 98%;
+    }
+}
+
+/*比赛进行页*/
+.matchdetail .main-content .testing .test-header {
+    border-bottom: 1px solid #e7e7e7;
+    margin-bottom: 30px;
+}
+
+.matchdetail .main-content .testing .inner-header {
+    width: 96%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.matchdetail .alert {
+    padding: 0;
+}
+
+.matchdetail .main-content .testing .test-lefttime {
+    float: right;
+    font-size: 2rem;
+}
+
+.matchdetail .alert-info {
+    background-color: #edf5f8;
+}
+
+.matchdetail .main-content .testing .test-logo {
+    background: url("/static/images/teston-top.jpg") no-repeat 0 0;
+    padding-left: 60px;
+    height: 52px;
+    font-size: 26px;
+    line-height: 24px;
+    color: #2e3b4e;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.matchdetail .main-content .testing .test-body {
+    font-size: 18px;
+    text-align: center;
+}
+
+.matchdetail .main-content .testing .test-body .form-control {
+    margin: 26px auto;
+    width: 40%;
+}
+
+.matchdetail .main-content .testing .test-body .radio {
+    padding: 6px 0;
+}
+
+.matchdetail .main-content .testing .footer-button {
+    text-align: center;
+    width: 36%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .matchdetail .main-content .testing .test-body .form-control {
+        width: 55%;
+    }
+
+    .matchdetail .main-content .testing .footer-button {
+        width: 50%;
+    }
+
+}
+
+@media (max-width: 768px) and (min-width: 600px) {
+    .matchdetail .main-content .testing .test-body .form-control {
+        width: 55%;
+    }
+
+    .matchdetail .main-content .testing .footer-button {
+        width: 50%;
+    }
+}
+
+@media (max-width: 600px) and (min-width: 500px) {
+    .matchdetail .main-content .testing .test-body .form-control {
+        width: 60%;
+    }
+
+    .matchdetail .main-content .testing .footer-button {
+        width: 56%;
+    }
+}
+
+@media (max-width: 500px) and (min-width: 450px) {
+    .matchdetail .main-content .testing .test-body .form-control {
+        width: 70%;
+    }
+
+    .matchdetail .main-content .testing .footer-button {
+        width: 64%;
+    }
+
+    .matchdetail .main-content .testing .test-logo {
+        padding-left: 44px;
+        height: 44px;
+        font-size: 22px;
+        line-height: 22px;
+        background-size: 22%;
+    }
+
+}
+
+@media (max-width: 450px) and (min-width: 340px) {
+    .matchdetail .main-content .testing .test-body .form-control {
+        width: 85%;
+    }
+
+    .matchdetail .main-content .testing .footer-button {
+        width: 76%;
+    }
+
+    .matchdetail .main-content .testing .test-logo {
+        padding-left: 36px;
+        height: 36px;
+        font-size: 16px;
+        line-height: 16px;
+        background-size: 26%;
+    }
+
+    .matchdetail .main-content .testing .test-lefttime {
+        font-size: 1.6rem;
+    }
+
+}
+
+@media (max-width: 340px) {
+    .matchdetail .main-content .testing .test-body .form-control {
+        width: 95%;
+    }
+
+    .matchdetail .main-content .testing .footer-button {
+        width: 85%;
+    }
+
+    .matchdetail .main-content .testing .test-logo {
+        padding-left: 29px;
+        height: 30px;
+        font-size: 15px;
+        line-height: 16px;
+        background-size: 26%;
+    }
+
+    .matchdetail .main-content .testing .test-lefttime {
+        font-size: 1.45rem;
+    }
+
+}
+
+/*比赛列表页*/
+.matchlist .main-content {
+    margin-bottom: 20px;
+}
+
+.matchlist .main-content .close {
+    z-index: 10;
+    top: -8px;
+}
+
+.matchlist .main-content .alert {
+    margin: 0 1% 30px;
+    width: 48%;
+    position: relative;
+    border: 1px solid #ccc;
+}
+
+.matchlist .main-content .pub-date {
+    display: inline-block;
+    width: 58px;
+    height: 58px;
+    /*background-color: #379ce2;*/
+    border: 1px solid #379ce2;
+    text-align: center;
+    color: #379ce2;
+
+    transition: all 1s linear;
+}
+
+.matchlist .main-content .alert:hover {
+    background-color: #eaeaea;
+}
+
+.matchlist .main-content .alert:hover .pub-date {
+    background-color: #379ce2;
+    color: #FFF;
+}
+
+/*没有动画效果*/
+/*
+.matchlist .main-content .alert:hover .pub-date {
+    background-color: #379ce2;
+    color: #FFF;
+}
+*/
+
+.matchlist .main-content .pub-date i {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 32px;
+}
+
+.matchlist .main-content .pub-date b {
+    font-weight: normal;
+}
+
+.matchlist .main-content .pub-organ {
+    /*display: inline-block;*/
+    position: absolute;
+    margin-left: 16px;
+}
+
+.matchlist .main-content .pub-organ .hoted {
+    float: right;
+    margin-right: 10%;
+    color: yellow;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.matchlist .main-content .pub-organ h1 {
+    color: #000;
+    font-size: 15px;
+    margin: -4px 0 9px;
+    padding: 0;
+    /*display: inline-block;*/
+    font-weight: bold;
+}
+
+.matchlist .main-content .pub-organ p {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    color: #888787;
+    line-height: 20px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media (max-width: 650px) and (min-width: 400px) {
+    .matchlist .main-content .alert {
+        margin: 0 auto 30px;
+        width: 100%;
+        position: relative;
+        border: 1px solid #ccc;
+    }
+}
+
+@media (max-width: 400px) {
+    .matchlist .main-content .alert {
+        margin: 0 auto 30px;
+        width: 100%;
+        position: relative;
+        border: 1px solid #ccc;
+    }
+
+    .matchlist .main-content .pub-organ p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 330px) {
+    .usonPage .container {
+        padding: 0;
+    }
+
+}
+
+/*比赛结果、排行榜*/
+.matchrank .alert-info {
+    background-color: #f0f5f9;
+}
+
+.matchrank .match-result {
+    width: 90%;
+    margin: 0 auto;
+    /*min-height: 500px;*/
+    /*max-height: auto;*/
+}
+
+.matchrank .match-result .header-res {
+    background: url("/static/images/course-h1.jpg") no-repeat 50% 0;
+    /*font-size: 30px;*/
+    height: 38px;
+    text-align: center;
+    color: #FFF;
+    /*line-height: 40px;*/
+
+    width: 100%;
+    background-size: 100%;
+    margin-bottom: 30px;
+}
+
+.matchrank .match-result .header-res h1 {
+    margin: 0;
+    font-size: 100%;
+
+    /*font-size: 30px;*/
+    /*width: 100%; 默认占满一行*/
+}
+
+.matchrank .match-result .header-res span {
+    font-size: 34px;
+    line-height: 30px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+
+.matchrank .match-result .body-res {
+    /*width: 75%;*/
+}
+
+.matchrank .body-res td {
+    text-align: center;
+}
+
+.matchrank .body-res tr p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /*margin: 0 auto;*/
+}
+
+.matchrank .footer-res .panel-title {
+    text-align: center;
+    font-size: 14px;
+}
+
+.matchrank .footer-res .no-answer {
+    text-align: center;
+}
+
+.matchrank .footer-res .no-answer b {
+    font-size: 18px;
+    color: #313131;
+    font-weight: normal;
+}
+
+.matchrank .footer-res .no-answer a {
+    display: inline-block;
+    margin: 12px;
+}
+
+.topic-operate span.success-info{
+    color: red;
+    font-size: 20px;
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .matchrank .match-result .header-res span {
+        font-size: 28px;
+        line-height: 28px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+
+    .matchrank .match-result .header-res span {
+        font-size: 26px;
+        line-height: 26px;
+    }
+
+    .matchrank .match-result .header-res {
+        background-size: 130%;
+        margin-bottom: 20px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 580px) {
+
+    .matchrank .match-result .header-res span {
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    .matchrank .match-result .header-res {
+        background-size: 170%;
+        margin-bottom: 20px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 581px) and (min-width: 486px) {
+
+    .matchrank .match-result .header-res span {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .matchrank .match-result .header-res {
+        background-size: 160%;
+        margin-bottom: 20px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 486px) and (min-width: 430px) {
+
+    .matchrank .match-result .header-res span {
+        font-size: 18px;
+        line-height: 18px;
+    }
+
+    .matchrank .match-result .header-res {
+        background-size: 170%;
+        margin-bottom: 20px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 430px) {
+
+    .matchrank .match-result .header-res span {
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .matchrank .match-result .header-res {
+        background-size: 210%;
+        margin-bottom: 20px;
+        height: 24px;
+    }
+}

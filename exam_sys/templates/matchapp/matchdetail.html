@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}设置题库{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/extend.css">
+{% endblock %}
+{% block js %}
+    <script src="/static/js/match.exam.js"></script>
+{% endblock %}
+{% block content %}
+
+    <div class="container matchdetail">
+        <ul class="breadcrumb">
+            <span class="cur-pos">当前位置：</span>
+            <li><a href="/">首页</a> <span class="divider"></span></li>
+            <li><a href="{% url 'match:list' %}">比赛列表</a> <span class="divider"></span></li>
+            <li><a href="{% url 'match:info' match_info.id %}">比赛信息</a> <span class="divider"></span></li>
+            <li class="active">答题中</li>
+        </ul>
+        <div class="main-content alert alert-info">
+            <div class="testing">
+                <div class="test-header">
+                    <div class="inner-header">
+                        <span class="test-logo">{{ match_info.mname }}</span>
+                        <span class="test-lefttime">倒计时：<span
+                                style="color: #e4653d;">{{ match_info.mtime }}</span></span>
+                    </div>
+                </div>
+                <div class="test-body">
+                    {% for obj in exam_list %}
+                    <div class="pagenation">
+                        <p>Q:（{{ obj.perSore }}分） <label class="topicTitle">{{ obj.title }}</label></p>
+                        {% if obj.source %}
+                            <p style="color: red; font-size: 16px;">问题来源: <i>{{ obj.source }}</i></p>
+                        {% endif %}
+                        {% if obj.image_url %}
+                            <p><img src="{{ obj.image_url|safe }}" title="{{ obj.title }}" alt="{{ obj.title }}"></p>
+                        {% endif %}
+                        {% if obj.audio_url %}
+                            <p style="color: red; font-size: 16px;"><i>暂不支持音频，系统升级后再试</i></p>
+                        {% endif %}
+                        <form role="form" action="{{ answer_url }}" method="post">
+                            {% if obj.radio1 or obj.radio2 or obj.radio3 or obj.radio4 %}
+                                <div class="radio">
+                                    <label><input type="radio" name="optradio">{{ obj.radio1 }}</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="optradio">{{ obj.radio2 }}</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="optradio">{{ obj.radio3 }}</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="optradio">{{ obj.radio4 }}</label>
+                                </div>
+                            {% else %}
+                                <div class="form-group">
+                                    <input type="text" class="form-control topic-title" placeholder="请输入答案">
+                                </div>
+                            {% endif %}
+                        </form>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="footer-button">
+                        <button type="button" class="btn btn-primary" id="prevpage">后退</button>
+                        <button type="button" class="btn btn-primary" id="nextpage">前进</button>
+                        <button type="button" class="btn btn-danger">交卷</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

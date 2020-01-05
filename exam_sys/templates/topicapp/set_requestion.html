@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}设置题目{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/extend.css">
+{% endblock %}
+{% block js %}{% endblock %}
+{% block content %}
+    <div class="set-index container">
+        {% if not request.session.is_auth %}
+            <div class="set_request">
+                <div class="alert alert-danger">
+                    <strong>出错了/(ㄒoㄒ)/~~</strong> 您的账户还没有登录或还不是机构用户，登录到机构用户账号吧~
+                    <a class="back_text" href="#" onclick="history.back();"><strong>< 返回上一页</strong></a>
+                </div>
+                <div class="pic"><img src="/static/img/404.png" class="img-responsive"></div>
+            </div>
+        {% else %}
+            <div class="jumbotron">
+                <h1 class="title">录制题库</h1>
+                <p class="con">
+                    您可以通过下载我们的电子模板，对其进行简单编辑，然后再将您的模板上传到我们的服务器，
+                    就可以录制一套您自己的题库啦~</p>
+                <p>
+                    <a href="{% url "topic:question_config" %}" class="btn btn-primary btn-lg" role="button">开始录制</a>
+                </p>
+            </div>
+
+            <div class="jumbotron">
+                <h1 class="title">配置比赛</h1>
+                <p class="con">
+                    您可以使用自己上传的或者他人上传的题库来创建您自己的比赛或者面试。只需要简单的几步，让别人也来参与您创建的活动~</p>
+                <p>
+                    <a href="{% url "match:match_config" %}" class="btn btn-primary btn-lg" role="button">开始配置</a>
+                </p>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

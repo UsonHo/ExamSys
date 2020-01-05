@@ -1,0 +1,200 @@
+body .navbar h3{
+    font-size: 14px;
+    margin: 0;
+    /*font-family: 'Microsoft Yahei';*/
+}
+h4{
+    padding: 0;
+    margin: 0;
+}
+body{
+    /*font-family: 'Microsoft Yahei';*/
+}
+.space{
+    height: 98px;
+}
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
+.navbar-collapse ul{
+    list-style: none;
+}
+.navbar-collapse ul li:nth-last-child(1){
+    width: 80px;
+}
+.navbar-collapse ul .p_login, .navbar-collapse ul .p_logout{
+    display: none;
+    border-bottom: 0;
+    color: #fff;
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    padding: 2px;
+    text-align: center;
+    background-color: #3bc9c2;
+    z-index: 999;
+}
+
+.navbar-collapse ul li a{
+    /*padding: 0 15px;*/
+    line-height: 92px;
+    font-size: 14px;
+    height: 92px;
+    color: black;
+    position: relative;
+    display: block;
+    padding: 0 15px;
+    text-decoration: none;
+    /*font-family: 'Microsoft Yahei';*/
+}
+.navbar-collapse ul li:hover{
+    border-bottom: 3px solid #3bc9c2;
+    background-color: #eee;
+}
+.navbar-collapse ul li:hover a{
+    color: #3bc9c2;
+}
+.navbar-collapse ul li:hover .p_login, .navbar-collapse ul li:hover .p_logout{
+    display: inline-block;
+    background-color: #3bc9c2;
+    cursor: pointer;
+    /*position: absolute;*/
+    color: #fff;
+}
+
+.navbar-collapse .row {
+    padding: 0;
+}
+body .page-header{
+    height: 96px;
+}
+body .nav{
+    float: right;
+}
+body .navbar{
+    margin: 0 0 2px 0;
+    border-bottom: 1px solid #c7c7c7;
+    background-color: #fff;
+}
+body .navbar-brand{
+    padding: 0;
+    margin-left: 0;
+}
+
+.page-footer{
+    background-color: #2f3c4e;
+    text-align: center;
+}
+.page-footer .friend-link{
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px #445060 solid;
+    color: #9baec7;
+}
+.page-footer .friend-link a{
+    color: #9baec7;
+    padding: 0 2%;
+    text-decoration: none;
+}
+.page-footer .copy{
+    padding: 12px 0 25px 0;
+    border-top: 1px #19293d solid;
+    color: #8e8e8e;
+}
+.page-footer .copy p{
+    font-size: 12px;
+}
+
+@media (max-width: 440px) {
+    .navbar-toggle {
+        position: absolute;
+        right: 0;
+        top: 73px;
+    }
+}
+.navbar-toggle{
+    background-color: #1b6d85;
+    border: 1px solid #1c9090;
+    z-index: 10000;
+}
+.navbar-toggle .icon-bar{
+    background-color: #fff;
+}
+
+.navbar-header ul{
+    list-style: none;
+    padding:0;
+}
+.mob-menu{
+    position: absolute;
+    left:0;
+    top:0;
+    right:0;
+    background-color: #1b6d85;
+    height: 168px;
+    z-index: 666;
+}
+.mob-menu li:nth-child(1){
+    margin-top: 10px;
+}
+.mob-menu li{
+    padding: 10px 0;
+    text-indent: 20px;
+}
+
+.mob-menu li .btn-sm{
+    padding: 1px 5px;
+    margin-right: 5px;
+}
+.mob-menu li:hover{
+    background-color: #000;
+}
+.mob-menu li a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.modal{
+    display: none;
+}
+.modal-footer a{
+    display: inline-block;
+    margin-right: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.page-body .modal-dialog{
+    /*display: none;*/
+    position: relative;
+}
+.page-body .modal-dialog .modal-content{
+    position: relative;
+
+    z-index: 11;
+    border-radius: 6px;
+}
+.page-body .modal-dialog .mask{
+    position: fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color: #2f3c4e;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    z-index: 10;
+}
+
+.modal-dialog .find-passwd .form-group p{
+    color: red;
+}
+
+/*错误提示*/
+.modal .modal-dialog .error-message, #organ .error-message, .main-content .error-message{
+    color: red;
+}
+

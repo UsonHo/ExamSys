@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}出错了{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/extend.css">
+{% endblock %}
+{% block js %}
+    <script>
+    $(function () {
+        var cur_path = (document.referrer).split('?do=')[1];
+        if(cur_path == 'login'){
+            console.log(cur_path);
+            $('.set_request .back_text').attr('onclick', 'history.go(-2);');
+        }
+    });
+    </script>
+{% endblock %}
+{% block content %}
+    <div class="container set_request">
+        <div class="alert alert-danger">
+            <strong>出错了/(ㄒoㄒ)/~~</strong>   {{ errmsg }}
+            <a class="back_text" href="#" onclick="history.back();"><strong>< 返回上一页</strong></a>
+        </div>
+        <button type="button" class="btn btn-info btn-lg btn-block back_text" onclick="history.back(-1)">返回上一页</button>
+        <div class="pic"><img src="/static/img/404.png" class="img-responsive"></div>
+    </div>
+{% endblock %}

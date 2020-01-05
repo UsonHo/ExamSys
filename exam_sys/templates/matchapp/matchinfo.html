@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block title %}设置题库{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/extend.css">
+    <style>
+        /*答题必要信息模态框*/
+        .recordSomeInfo .answer-header {
+            padding: 15px;
+            border-bottom: 1px solid #e5e5e5;
+            text-align: center;
+        }
+
+        .recordSomeInfo .answer-header .head {
+            padding: 20px;
+            display: inline-block;
+            font-size: 26px;
+        }
+    </style>
+{% endblock %}
+{% block js %}
+    <script src="/static/js/matchinfo.js"></script>
+{% endblock %}
+{% block content %}
+    <div class="container matchinfo">
+        <ul class="breadcrumb">
+            <span class="cur-pos">当前位置：</span>
+            <li><a href="/">首页</a> <span class="divider"></span></li>
+            <li><a href="{% url 'match:list' %}">比赛列表</a> <span class="divider"></span></li>
+            <li class="active">比赛信息</li>
+        </ul>
+        <div class="main-content alert alert-info">
+            <div class="report-result">
+                <h1 class="rep-title img-responsive">{{ match_obj.mname }}</h1>
+
+                <div class="res-table">
+                    <span class="header-welcome img-responsive">{{ request.session.username }} 同学：你好！</span>
+                    <div class="res-detail">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <td>出题机构：{{ match_obj.auinfo.oname }}</td>
+                            </tr>
+                            <tr class="hide">
+                                <td>题目总分：{{ match_obj.score }}</td>
+                            </tr>
+                            <tr>
+                                <td>题目数量：{{ match_obj.topicount }}</td>
+                            </tr>
+                            <tr>
+                                <td>题库大小：{{ match_obj.qinfo.qsize }}</td>
+                            </tr>
+                            <tr>
+                                <td>答题时间：{{ match_obj.mtime }} 分钟</td>
+                            </tr>
+                            <tr>
+                                <td>开始时间：{{ match_obj.stime }}</td>
+                            </tr>
+                            <tr>
+                                <td>截止时间：{{ match_obj.etime }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="footer-button">
+                    <button type="button" class="btn btn-primary" id="challage">开始挑战</button>
+                    <a href="{% url 'match:rank' match_obj.id %}" type="button" class="btn btn-success" id="showrank">查看排行榜</a>
+                    <a href="{% url 'match:result' match_obj.id %}" type="button" class="btn btn-warning" id="showrank">考试结果</a>
+                </div>
+
+                <!-- 答题必填信息 -->
+                <div class="modal-dialog hide" style="margin-top: -310px;">
+                    <div class="modal-content recordSomeInfo">
+                        <h4 class="answer-header">
+                            <span class="head">请先填写一些答题必要的信息</span>
+                            <span aria-hidden="true" class="close">×</span>
+                        </h4>
+                        <div class="modal-body">
+                            <form id="answerUser" action="{{ current_url }}" method="post" role="form">
+                                {% csrf_token %}
+
+                                {% for formgroup in loop_list %}
+                                    <div class="form-group">
+                                        <label for="{{ formgroup.3 }}">{{ formgroup.2 }}</label>
+                                        {% if formgroup|length == 4 %}
+                                        <input type="text" display="{{ formgroup.0 }}" class="form-control"
+                                               id="{{ formgroup.3 }}" name="{{ formgroup.1 }}">
+                                        {% endif %}
+
+                                        {% if formgroup|length == 5 %}
+                                        <select class="form-control" name="{{ formgroup.1 }}" display="{{ formgroup.0 }}">
+                                                {% for option in formgroup.4 %}
+                                                    <option value="{{ option }}">{{ option }}</option>
+                                                {% endfor %}
+                                        </select>
+                                        {% endif %}
+                                        <span class="error-message"></span>
+                                    </div>
+                                {% endfor %}
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" id="postInfo">提交</button>
+                                    <button type="submit" class="btn btn-danger" id="cancleInfo">取消</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

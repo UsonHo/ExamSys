@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block title %}设置题库{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/extend.css">
+{% endblock %}
+{% block js %}
+    <script>
+        $(function () {
+            function uson_set() {
+                $('.con').each(function () {
+                    var conHeight = $(this).offset().top;
+                    //console.log(conHeight);
+                    var myHeight = $(this).height();
+                    //console.log(myHeight, $(window).width());
+                    if (($(window).width() > 992)) {
+                        $(this).children(':first').css('line-height', (myHeight + myHeight * 2 / 3) + 'px')
+                    } else if (($(window).width() <= 992) && ($(window).width() > 768)) {
+                        $(this).children(':first').css('line-height', (myHeight + myHeight * 2 / 3) * 0.88 + 'px')
+                    } else if (($(window).width() <= 768) && ($(window).width() > 660)) {
+                        var h = parseInt(parseInt($(this).css('width')) / myHeight);
+                        //console.log(h, myHeight);
+                        var height = (myHeight + myHeight * 2 / 3) * h + 'px';
+                        $(this).children(':first').css({"line-height": height, "fontSize": '16px'})
+                    } else if (($(window).width() <= 660) && ($(window).width() > 560)) {
+                        var h = parseInt($(this).css('width')) / myHeight;
+                        //console.log(h, myHeight);
+                        var height = (myHeight + myHeight * 2 / 3) * h + 'px';
+                        $(this).children(':first').css({"line-height": height, "fontSize": '16px'})
+                    } else if (($(window).width() <= 560) && ($(window).width() > 450)) {
+                        var h = parseFloat($(this).css('width')) / myHeight;
+                        //console.log(h, myHeight);
+                        var height = (myHeight * h + myHeight * 2 / 3) + 'px';
+                        $(this).children(':first').css({"line-height": height, "fontSize": '14px'})
+                    } else if (($(window).width() <= 450) && ($(window).width() > 430)) {
+                        var h = parseFloat($(this).css('width')) / myHeight;
+                        //console.log(h, myHeight);
+                        var height = (myHeight + myHeight * 1 / 3) + 'px';
+                        $(this).children(':first').css({"line-height": height, "fontSize": '14px'})
+                    } else if (($(window).width() <= 430) && ($(window).width() > 340)) {
+                        var h = parseFloat($(this).css('width')) / myHeight;
+                        //console.log(h, myHeight);
+                        var height = (myHeight + myHeight * (2.5 - h) / 3) + 'px';
+                        $(this).children(':first').css({"line-height": height, "fontSize": '12px'})
+                    } else {
+                        var height = (myHeight * 1.4) + 'px';
+                        $(this).children(':first').css({"line-height": height, "fontSize": '10px'});
+                    }
+                });
+            }
+
+            uson_set();
+            $(window).resize(function () {
+                uson_set();
+            });
+        });
+    </script>
+    <script src="/static/js/topic.config.js"></script>
+{% endblock %}
+{% block content %}
+    <div class="container main-content">
+        <div class="title-pr img-responsive">
+            <span>创建题库流程</span>
+        </div>
+        <div class="row">
+            <div class="con topic-download col-lg-2 col-md-2 col-sm-2 col-xs-6"><span class="name">下载题库</span></div>
+            <div class="noImg col-lg-2 col-md-1 col-sm-1 col-xs-6"></div>
+            <div class="con topic-name col-lg-2 col-md-2 col-sm-2 col-xs-6"><span class="name">题库名称</span></div>
+            <div class="noImg col-lg-2 col-md-1 col-sm-1 col-xs-6"></div>
+            <div class="con topic-type col-lg-2 col-md-2 col-sm-2 col-xs-6"><span class="name">题库类型</span></div>
+            <div class="noImg col-lg-2 col-md-1 col-sm-1 col-xs-6"></div>
+            <div class="con topic-upload col-lg-2 col-md-2 col-sm-2 col-xs-6"><span class="name">上传文件</span></div>
+        </div>
+
+        <div class="topic-operate">
+            <!-- enctype="multipart/form-data" -->
+            <form id="form-set" method="post" action="{% url "topic:question_config" %}">
+                {% csrf_token %}
+                <input type="hidden" name="aid" value="{{ user_obj.0 }}">
+                <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-6" style="padding-right: 0">
+                    <label for="exampleInputEmail1">① 下载题库</label>
+                    <p>
+                        <!-- <a href="{% static "topicapp/templateConfig.xlsx" %}" -->
+                        <a href="{% url "topic:download_temp" %}"
+                           class="btn btn-download btn-success">下载</a>
+                        <span> &nbsp;简易模板<i>，按照模板中的要求修改题库。</i></span>
+                    </p>
+                </div>
+                <div class="form-group col-lg-3 col-md-2 col-sm-6 col-xs-6">
+                    <label for="topicNmae">② 题库名称</label>
+                    <input type="text" class="form-control" name="qname" id="topicName" placeholder="请输入题库名称">
+                    <div class="error-message"></div>
+                </div>
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    <label>③ 题库类型</label>
+                    <div class="dropdown">
+                        <!--
+                        <button type="button" class="btn btn-primary dropdown-toggle form-control" data-toggle="dropdown">
+                            <span>请选择一个题库类型</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item form-control" href="#">技术类</a>
+                            <a class="dropdown-item form-control" href="#">教育类</a>
+                            <a class="dropdown-item form-control" href="#">文化类</a>
+                            <a class="dropdown-item form-control" href="#">常识类</a>
+                            <a class="dropdown-item form-control" href="#">地理类</a>
+                            <a class="dropdown-item form-control" href="#">体育类</a>
+                            <a class="dropdown-item form-control" href="#">面试类</a>
+                        </div>
+                        -->
+
+                        <button type="button" class="btn btn-primary dropdown-toggle form-control"
+                                data-toggle="dropdown">
+                            <span id="topicType">请选择一个题库类型</span>
+                        </button>
+                        <div class="error-message"></div>
+                        <div class="dropdown-menu">
+                            {% for type in uploadtopic_mf.qtype %}
+                                {{ type }}
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    <label for="topicFile">④ 上传文件</label>
+                    <input type="file" class="form-control" name="qfile" id="topicFile">
+                    <!--
+                    <div class="upload-main">
+                        <a class="beautifulUFB">选择文件</a>
+                        <input type="file" class="form-control" style="/*padding: 4px;*/ " id="uploadFileButton">
+                    </div>
+                    -->
+                    <div class="error-message"></div>
+                </div>
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                     style="text-align: center; line-height: 70px">
+                    <button type="submit" class="btn btn-set btn-danger">开始录制</button>
+                </div>
+            </form>
+
+            <div class="alert alert-success create_success hide" style="text-align: center; font-size: 20px;">
+                <strong>模板上传并解析成功!</strong>
+                <p>本次创建<span id="cnum" class="success-info">0</span>道选择题和<span id="fnum" class="success-info">0</span>道填空题</p>
+                <p>本次创建出现和数据库已有题目重复:选择题数<span id="rcnum" class="success-info">0</span>道和重复填空题数<span id="rfnum" class="success-info">0</span>道</p><br/>
+                <a class="alert-link" href="{% url "topic:question_config" %}" style="text-decoration: none;">点我继续创建</a>
+            </div>
+        </div>
+
+        <div class="make-it"></div>
+    </div>
+{% endblock %}

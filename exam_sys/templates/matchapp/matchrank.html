@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% block title %}设置题库{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/extend.css">
+{% endblock %}
+{% block js %}
+    <script>
+        $(function () {
+            function matchTable() {
+                $('.body-res tr p').each(function () {
+                    if ($(window).width() <= 1200 && $(window).width() > 992) {
+                        var curWidth = (parseInt($('.body-res').width()) + 30) * 3 / 9 + 'px';
+                        $(this)[0].style.width = curWidth;
+                    } else if ($(window).width() <= 992 && $(window).width() >= 768) {
+                        var curWidth = (parseInt($('.body-res').width()) + 30) * 3 / 8 + 'px';
+                        $(this)[0].style.width = curWidth;
+                    } else if ($(window).width() < 768 && $(window).width() >= 520) {
+                        var curWidth = (parseInt($('.body-res').width()) + 30) * 5 / 12 + 'px';
+                        $(this)[0].style.width = curWidth;
+                    } else {
+                        var curWidth = (parseInt($('.body-res').width()) + 30) * 0.25 + 'px';
+                        $(this)[0].style.width = curWidth;
+                    }
+                });
+            }
+
+            matchTable();
+            $(window).resize(function () {
+                matchTable();
+            });
+
+            // 时间转换
+            var time_text;
+            var rep = /\d+\.\d+|\d+/g;
+            var rep_res;
+            $('.matchrank .match-result .second').each(function (k) {
+                time_text = $(this).text();
+                rep_res = parseFloat(time_text.match(rep)[0]);
+                if(rep_res > 60){
+                    $(this).text((rep_res/60).toFixed(1) + ' 分钟');
+                }
+            });
+
+            $('.matchrank .match-result .second2').each(function (k) {
+                time_text = $(this).text();
+                rep_res = parseFloat(time_text.match(rep)[0]);
+                if(rep_res > 60){
+                    $(this).text('我的用时：' + (rep_res/60).toFixed(1) + ' 分钟');
+                }
+            });
+        });
+    </script>
+{% endblock %}
+{% block content %}
+
+    <div class="container matchrank">
+        <ul class="breadcrumb">
+            <span class="cur-pos">当前位置：</span>
+            <li><a href="/">首页</a> <span class="divider"></span></li>
+            <li><a href="{% url 'match:list' %}">比赛列表</a> <span class="divider"></span></li>
+            <li><a href="{% url 'match:info' match_obj.id %}">比赛信息</a> <span class="divider"></span></li>
+            <li class="active">比赛结果</li>
+        </ul>
+        <div class="inner-content alert alert-info">
+            <div class="match-result">
+                <div class="header-res">
+                    <h1>
+                        <span class="glyphicon" style="">排行榜</span>
+                    </h1>
+                </div>
+                <div class="row">
+
+                    <div class="body-res col-lg-9 col-md-8 col-sm-7">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <!-- 2 3 2 2 : 9/12*2/9=2/12 -->
+                                <td>排名</td>
+                                <td>昵称</td>
+                                <td>得分</td>
+                                <td>用时</td>
+                            </tr>
+                            {% if reports %}
+                                {% for item in reports %}
+                                    <tr class="w" rank="
+
+                                            {% if request.session.username == item.baseuser.uname %}{{ forloop.counter }}{% else %}0{% endif %}">
+                                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-3">{{ forloop.counter }}</td>
+                                        <td class="col-lg-3 col-md-2 col-sm-2 col-xs-3"><p
+                                                style="margin: 0 auto;">{{ item.baseuser.uname }}</p></td>
+                                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-3">{{ item.resgrade }}</td>
+                                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-3 second">{{ item.usedtime }}秒</td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr class="w">
+                                    <td class="col-lg-2 col-md-2 col-sm-2 col-xs-3">暂无</td>
+                                    <td class="col-lg-3 col-md-2 col-sm-2 col-xs-3"><p
+                                            style="margin: 0 auto;">暂无</p></td>
+                                    <td class="col-lg-2 col-md-2 col-sm-2 col-xs-3">暂无</td>
+                                    <td class="col-lg-2 col-md-2 col-sm-2 col-xs-3">暂无</td>
+                                </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="footer-res col-lg-3 col-md-3 col-sm-5">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">历史最佳排名</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div class="no-answer">
+                                    {% if cur_report_list %}
+                                        <a class="btn btn-info" id="myRank">我的排名：第<span>{{ cur_report_list.0.0 }}</span>名</a>
+                                        <a class="btn btn-info second2">我的用时：{{ cur_report_list.0.1 }}秒</a>
+                                    {% else %}
+                                        <b>您还没有参加比赛哦!</b>
+                                        <a type="button" class="btn btn-info" href="/">回首页</a>
+                                        <a type="button" class="btn btn-info" href="{% url 'match:info' match_obj.id %}">去答题</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

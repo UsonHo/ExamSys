@@ -1,0 +1,335 @@
+{% extends 'base.html' %}
+{% block title %}设置题库{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/extend.css">
+    <style>
+    .def_active{
+        background-color: #ce8483;
+    }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="container mysetquestion">
+        <div class="inner-content">
+            <div class="configTitle">
+                <span class="text-title img-responsive">配置比赛</span>
+            </div>
+            <div class="row">
+                <div class="leftSet col-lg-3 col-md-3 col-sm-4">
+                    <h3 class="title">选择题库</h3>
+                    <label>题库类型</label>
+                    <div class="dropdown">
+                        <input type="button" class="topictype btn btn-info dropdown-toggle" data-toggle="dropdown"
+                               name="qtype" tid="7" value="热门题库">
+                        <ul class="dropdown-menu">
+                            {% for type in form_obj.qtype %}
+                                <li class="btn btn-info">{{ type }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="selectKu">
+                        <label>选择题库</label>
+                        {% for topic in topicinfo_list %}
+                            <li class="btn btn-info uson" value="{{ topic.id }}" type="{{ topic.qtype }}"
+                                title="{{ topic.qname }}(共{{ topic.qsize }}题)">
+                                {{ topic.qname }}(共{{ topic.qsize }}题)
+                            </li>
+                            <span style="display: none">{{ topic.qname }}:{{ topic.qtype }}:{{ topic.qsize }}:{{ topic.qselect }}:{{ topic.qfillblank }}:{{ topic.qucount }}:{{ topic.qhasmatch }}</span>
+                        {% endfor %}
+                        <div class="dropup hide">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="menu1"
+                                    data-toggle="dropdown">查看更多
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1"></ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="midSet col-lg-4 col-md-4 col-sm-4">
+                    <h3 class="title">配置比赛</h3>
+                    <form id="matchConfig" action="{% url 'match:match_config' %}" method="post">
+                        <input type="hidden" name="aid" class="form-control" id="aid" value="{{ user_obj.authuser.id }}">
+                        <div class="form-group">
+                            <label for="matchname">比赛名称</label>
+                            <input type="text" name="matchname" class="form-control" id="matchname" placeholder="填写比赛名称,6-20字符">
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="organame">机构名称</label>
+                            <input type="text" class="form-control" name="organame" id="organame" value="{{ user_obj.authuser.oname }}" disabled>
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subcount">出题数量</label>
+                            <input type="number" class="form-control" name="subcount" id="subcount" value="10">
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="score" class="hide">总分数</label>
+                            <input type="hidden" class="form-control" name="score" id="score" value="100" disabled>
+                            <div class="error-message hide"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="settime">开始时间</label>
+                            <input type="datetime" class="form-control" name="settime" id="settime" placeholder="2019-12-03 16:30" value="2020-03-30 20:20">
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="usettime">结束时间</label>
+                            <input type="datetime" class="form-control" name="usettime" id="usettime" placeholder="2019-12-10 16:30" value="2020-04-30 20:20">
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="examtime">答题时间限制</label>
+                            <input type="number" class="form-control" id="examtime" name="examtime" placeholder="答题时间单位:分钟(min)">
+                            <div class="error-message"></div>
+                        </div>
+                    </form>
+                    <div class="saveButton btn btn-danger pc-save">保存到数据库</div>
+                </div>
+
+                <div class="rightSet col-lg-4 col-md-4 col-sm-4 ">
+                    <h3 class="title">配置页面数据(可选)</h3>
+
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="matchRegular">比赛规则</label>
+                            <textarea class="form-control" name="matchRegular" id="matchRegular" rows="3" placeholder="请输入比赛规则的内容，让答题者快速了解比赛内容"></textarea>
+                            <div class="error-message"></div>
+                        </div>
+                        <div>
+                            <label for="addExtraInfo">开启录入信息功能</label>
+                            <span class="btn badge"
+                                  title="开启录入信息功能将在答题前展示一个表单，&#10;这个表单用来录入一些您想要的用户信息，&#10;您可以通过下面的复选框指定录入哪些信息。">?</span>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="addExtraInfo" name="addExtraInfo" value="1">
+                            </label>
+                        </div>
+                        <div>
+                            <label>您想要录入的字段</label>
+                            <span class="btn badge" title="如果您启用了表单信息录入功能，&#13;选定你想要的展示的字段即可。">?</span>
+                        </div>
+                        <div class="select-field">
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <td class="uname">姓名</td>
+                                    <td class="ugender">性别</td>
+                                    <td class="uage">年龄</td>
+                                    <td class="umobile">手机号</td>
+                                    <td class="uweixin">微信号</td>
+                                    <td class="uemail">邮箱</td>
+                                    <td class="uid">身份证号</td>
+                                    <td class="uschool">毕业院校</td>
+                                    <td class="uaddr">地址</td>
+                                    <!--
+                                    <td class="name">姓名</td>
+                                    <td class="gender">性别</td>
+                                    <td class="age">年龄</td>
+                                    <td class="phone">手机号</td>
+                                    <td class="weixin">微信号</td>
+                                    <td class="email">邮箱</td>
+                                    <td class="idcard">身份证号</td>
+                                    <td class="graduate">毕业院校</td>
+                                    <td class="addr">地址</td>
+                                    -->
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="name" name="uname" value="1">
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="gender" name="ugender" value="1">
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="age" name="uage" value="1">
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="phone" name="umobile" value="1">
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="weixin" name="uweixin" value="1">
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="email" name="uemail" value="1">
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="idcard" name="uid" value="1">
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="graduate" name="uschool" value="1">
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="addr" name="uaddr" value="1">
+                                        </label>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div id="deldelay">
+                            <label>作为下拉框的字段</label>
+                            <span class="btn badge"
+                                  title="如果普通的输入框不能满足需求，&#10;点击下面的加号将上面的字段变成下拉框的形式。&#13;必须事上面勾选过的字段才能设置为下拉框形式。">?</span>
+                        </div>
+                        <div class="addField">
+                            <table class="table table-hover">
+                                <tbody id="addField"></tbody>
+                            </table>
+                        </div>
+                        <div class="glyphicon glyphicon-plus" style="font-size: 32px; color: #FFF; cursor: pointer;">
+                            <span class="btn badge hide" title="您忘了勾选些什么吧">?</span>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="saveButton btn btn-danger mob-save">保存到数据库</div>
+            </div>
+
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <!-- 题库模态框 -->
+                    <div class="modal-content leftinfo hide">
+
+                        <!-- 模态框头部 -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">当前所选题库详细信息</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- 模态框主体 -->
+                        <div class="modal-body">
+                            <table class="table table-condensed">
+                                <tbody>
+                                <tr>
+                                    <td>题库名称</td>
+                                    <td class="qname"></td>
+                                </tr>
+                                <tr>
+                                    <td>题库类型</td>
+                                    <td class="qtype"></td>
+                                </tr>
+                                <tr>
+                                    <td>题库大小</td>
+                                    <td class="qsize"></td>
+                                </tr>
+                                <tr>
+                                    <td>选择题题数</td>
+                                    <td class="qselect"></td>
+                                </tr>
+                                <tr>
+                                    <td>填空题题数</td>
+                                    <td class="qfillblank"></td>
+                                </tr>
+                                <tr>
+                                    <td>参与人次</td>
+                                    <td class="qucount"></td>
+                                </tr>
+                                <tr>
+                                    <td>已出比赛</td>
+                                    <td class="qhasmatch"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- 模态框底部 -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">使用题库</button>
+                        </div>
+
+                    </div>
+
+                    <!-- 保存到数据库出错的模态框 -->
+                    <div class="modal-content midinfo modal-sm hide">
+                        <div class="modal-body">
+                            <p>请选择一个题库</p>
+                        </div>
+
+                        <!-- 模态框底部 -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                        </div>
+                    </div>
+
+                    <!-- 自定义字段模态框 -->
+                    <div class="modal-content rightinfo hide">
+                        <div class="modal-body">
+
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="name">选择一个字段名</label>
+                                    <select class="form-control" name="selectFields">
+                                        <option class="uname hide">姓名</option>
+                                        <option class="ugender hide">性别</option>
+                                        <option class="uage hide">年龄</option>
+                                        <option class="umobile hide">手机号</option>
+                                        <option class="uweixin hide">微信号</option>
+                                        <option class="uemail hide">邮箱</option>
+                                        <option class="uid hide">身份证号</option>
+                                        <option class="uschool hide">毕业院校</option>
+                                        <option class="uaddr hide">地址</option>
+                                        <!--
+                                        <option class="name hide">姓名</option>
+                                        <option class="gender hide">性别</option>
+                                        <option class="age hide">年龄</option>
+                                        <option class="phone hide">手机号</option>
+                                        <option class="weixin hide">微信号</option>
+                                        <option class="email hide">邮箱</option>
+                                        <option class="idcard hide">身份证号</option>
+                                        <option class="graduate hide">毕业院校</option>
+                                        <option class="addr hide">地址</option>
+                                        -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="wantShowInfo">输入一个可选值</label>
+                                    <input type="text" class="form-control" id="wantShowInfo"
+                                           placeholder="字段可选值，每一个值用#隔开，如: 吃饭#看电影#逛街">
+                                    <div class="error-message"></div>
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <!-- 模态框底部 -->
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-success btn-block" value="设置为下拉框">
+                        </div>
+                    </div>
+
+                    <div class="mask hide"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block js2 %}
+    <script src="/static/js/match.config.js"></script>
+{% endblock %}
