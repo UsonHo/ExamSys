@@ -126,6 +126,12 @@ $(function () {
     });
 
     $('#login :submit').click(function (event) {
+        if (navigator.cookieEnabled){
+            //alert('请确保浏览器的cookie可以使用');
+        }else{
+            alert('请确保浏览器的cookie未被禁用');
+            return;
+        }
         // 通过js设置cookie，记录登录前(当前的url路径)
         $.cookie('back_url', $('.cur_path').val());
 

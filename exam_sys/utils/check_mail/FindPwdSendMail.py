@@ -40,7 +40,7 @@ def send_code_email(email, send_type):
             .format(findpwd_url, email_obj.code)
 
         # send_mail(email_title, email_body, settings.EMAIL_FROM, [email])
-        send_status = send_mail(email_title, email_body, settings.EMAIL_FROM, ['1309603006@qq.com'])
+        send_status = send_mail(email_title, email_body, settings.EMAIL_FROM, [email])
         if not send_status:
             return False
         return True
