@@ -27,7 +27,7 @@
     {% block css %}{% endblock %}
 </head>
 <body>
-<div class="navbar page-header navbar-static-top navbar-fixed-top">
+<div class="navbar page-header navbar-static-top navbar-fixed-top" style="z-index: 8;">
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle" data-toggle="collapse" id="tog">
@@ -94,7 +94,7 @@
 <div class='page-body'>
     <!-- 模态框 -->
     <input class="cur_path" type="hidden" value="{{ request.get_full_path }}">
-    <div class="modal">
+    <div class="modal" style="z-index: 9;">
         <div class="modal-dialog">
             <!-- 登录模态框 -->
             <div class="modal-content login hide">
