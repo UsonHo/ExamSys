@@ -50,7 +50,8 @@ class CaptchaClient:
             return captchaResponse.__dict__
         except Exception as e:
             captchaResponse.setResult(True)
-            captchaResponse.setServerStatus("server error:" + e.message)
+            # captchaResponse.setServerStatus("server error:" + e.message)
+            captchaResponse.setServerStatus(e)  # e没有message属性
             return captchaResponse.__dict__
         finally:
             self.close(self.response)
@@ -61,4 +62,4 @@ class CaptchaClient:
                 response.close()
                 del response
         except Exception as e:
-            print("close response error:" + e.message)
+            print("close response error:", e)
