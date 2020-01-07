@@ -25,12 +25,12 @@ _serverIP = 'app.cloopen.com'
 
 # import ConfigParser
 # 主帐号
-accountSid = '8aaf07086f0d2ca0016f0f18ab0c02a8'
+accountSid = '8aaf07***'
 # 主帐号Token
-accountToken = '5012f3ae782c4a61861af47fc5e99faa'
-# accountToken = 'dc7ca1382621b964de8bc250334ba790'
+accountToken = '5012f3****'
+# accountToken = 'dc7ca1382621***'
 # 应用Id
-appId = '8aaf07086f0d2ca0016f0f18ab7302af'
+appId = '8aaf07086f0d2c*****'
 # 请求地址，格式如下，不需要写http://
 serverIP = 'app.cloopen.com'
 # 请求端口
@@ -89,7 +89,7 @@ ccp = CCPSMS.instance()
 # ccp = CCPSMS.instance()
 # if __name__ == '__main__':
 #     ccp = CCPSMS.instance()
-#     ccp.sendTemplateSMS("17334660992", ["短信验证码", "12345"], 1)
+#     ccp.sendTemplateSMS("173****", ["短信验证码", "12345"], 1)
 
 '''
 def sendTemplateSMS(to,datas,tempId):

@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'iax1+@gv+0+jrzlo)*q*!3%3z%)@d@e!ezp5$@tx1(rh4rq%&8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 # Application definition
 
@@ -140,8 +140,8 @@ SESSION_COOKIE_AGE = 1209600
 SESSION_SAVE_EVERY_REQUEST = True
 
 # 顶象无感滑动验证
-APP_ID = '3d0b7974885ff53382d3c054cee6adc3'
-APP_SECRET = 'b189bfb49c8a2bb5495cd1062afbf5da'
+APP_ID = '3d×××'
+APP_SECRET = 'b1×××'
 captchaClient = CaptchaClient(APP_ID, APP_SECRET)
 captchaClient.setTimeOut(2)
 # 设置超时时间，默认2秒
@@ -180,7 +180,7 @@ EMAIL_PORT = 465    # SSL协议端口号
 EMAIL_HOST_USER = "hualaiseo@163.com"
 
 # 授权密码
-EMAIL_HOST_PASSWORD = "python3"
+EMAIL_HOST_PASSWORD = "授权密码"
 
 EMAIL_USE_SSL = True
 # 一般都为false
